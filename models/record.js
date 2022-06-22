@@ -6,7 +6,7 @@ const recordSchema = new Schema({
     required: true // 這是個必填欄位
   },
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   amount: {
@@ -17,13 +17,13 @@ const recordSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     index: true,
-    required: true
+    required: false
   },
   categoryId: {  // 加入關聯設定
     type: Schema.Types.ObjectId,
     ref: 'Category',
     index: true,
-    required: true
+    required: false
   }
 
 })

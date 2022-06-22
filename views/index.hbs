@@ -13,7 +13,7 @@
   <li class=" list-group-item" id="index-list">
     {{this.name}} {{this.date}} {{this.amount}}
     <div class="text-end">
-      <a href=" /expense-tracker/{{ this._id }}/edit" class="btn btn-warning btn-sm">edit</a>
+      <a href="/expense-tracker/{{ this._id }}/edit" class="btn btn-warning btn-sm">edit</a>
       <form action="./expense-tracker/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
         <button class="btn btn-danger btn-sm" type="submit">delete</button>
       </form>

@@ -1,0 +1,24 @@
+<select class="form-select mb-3" aria-label="Default select example">
+  <option selected>類別：</option>
+  <option value="1">家居物業</option>
+  <option value="2">交通出行</option>
+  <option value="3">休閒娛樂</option>
+  <option value="3">餐飲食品</option>
+  <option value="3">其他</option>
+</select>
+
+<ul class="list-group">
+  {{#each records}}
+  <li class=" list-group-item" id="index-list">
+    {{this.name}} {{this.date}} {{this.amount}}
+    <div class="text-end">
+      <a href=" /expense-tracker/{{ this._id }}/edit" class="btn btn-warning btn-sm">edit</a>
+      <form action="./expense-tracker/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+        <button class="btn btn-danger btn-sm" type="submit">delete</button>
+      </form>
+    </div>
+  </li>
+  {{/each}}
+</ul>
+
+<a href="/expense-tracker/new"><button class="btn btn-primary text-center mt-3" id="index-add">新增支出</button></a>

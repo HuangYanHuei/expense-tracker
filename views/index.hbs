@@ -1,25 +1,34 @@
-<select class="form-select form-select-index mb-3" aria-label="Default select example">
-  <option selected>select</option>
-  <option value="家居物業">家居物業</option>
-  <option value="交通出行">交通出行</option>
-  <option value="休閒娛樂">休閒娛樂</option>
-  <option value="餐飲食品">餐飲食品</option>
-  <option value="其他">其他</option>
+<select class="form-select category form-select-index mt-5" name="category" aria-label="Default select"
+  style="width:35%">
+  <option value="{{records.category}}" disabled selected>select</option>
+  <option value="家居物業" name="家居物業">家居物業</option>
+  <option value="交通出行" name="交通出行">交通出行</option>
+  <option value="休閒娛樂" name="休閒娛樂">休閒娛樂</option>
+  <option value="餐飲食品" name="餐飲食品">餐飲食品</option>
+  <option value="其他" name="其他">其他</option>
 </select>
 
 <p class="index-total">總金額：</p>
-<ul class="list-group">
-  {{#each records}}
-  <li class=" list-group-item" id="index-list">
-    {{this.name}} {{this.date}} {{this.amount}}
-    <div class="text-end">
-      <a href="/records/{{ this._id }}/edit" method="POST" class="btn btn-warning btn-sm">edit</a>
-      <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-        <button class="btn btn-danger btn-sm" type="submit">delete</button>
-      </form>
-    </div>
-  </li>
-  {{/each}}
-</ul>
+<div class="d-flex justify-content-center">
+  <ul class="list-group" style="width:50%">
+    {{#each records}}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto me-auto">
+          <h4 style="display: inline; vertical-align: middle;">
+            {{ this.name }} {{this.date}} {{this.amount}}
+          </h4>
+        </div>
+        <div class="col-auto">
+          <a class="btn btn-success" href="./records/{{ this._id }}/edit">edit</a>
+          <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-danger" type="submit">delete</button>
+          </form>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</div>
 
 <a href="/records/new"><button class="btn btn-primary text-center mt-3" id="index-add">新增支出</button></a>

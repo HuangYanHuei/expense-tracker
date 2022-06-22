@@ -13,8 +13,8 @@
   <li class=" list-group-item" id="index-list">
     {{this.name}} {{this.date}} {{this.amount}}
     <div class="text-end">
-      <a href="/expense-tracker/{{ this._id }}/edit" class="btn btn-warning btn-sm">edit</a>
-      <form action="./expense-tracker/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+      <a href="/records/{{ this._id }}/edit" method="POST" class="btn btn-warning btn-sm">edit</a>
+      <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
         <button class="btn btn-danger btn-sm" type="submit">delete</button>
       </form>
     </div>
@@ -22,4 +22,4 @@
   {{/each}}
 </ul>
 
-<a href="/expense-tracker/new"><button class="btn btn-primary text-center mt-3" id="index-add">新增支出</button></a>
+<a href="/records/new"><button class="btn btn-primary text-center mt-3" id="index-add">新增支出</button></a>

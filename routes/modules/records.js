@@ -7,13 +7,12 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  // const userId = req.user._id
+  const userId = req.user._id
   // const categoryId = req.category._id
   const category = req.body.category
-  console.log(category)
   const { name, date, amount } = req.body
   return Record.create({
-    name, date, amount,
+    name, date, amount, userId
   })     // 存入資料庫
     .then(() => res.redirect('/')) // 新增完成後導回首頁
     .catch(error => console.log(error))
@@ -21,23 +20,26 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .lean()
     .then((records) => res.render('edit', { records }))
     .catch(error => console.log(error))
 })
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findByIdAndUpdate(id, req.body)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findByIdAndUpdate({ _id, userId }, req.body)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findByIdAndRemove(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findByIdAndRemove({ _id, userId })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })

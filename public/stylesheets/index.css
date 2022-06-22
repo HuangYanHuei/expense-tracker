@@ -1,4 +1,4 @@
-.form-select {
+.form-select-index {
   width: 600px;
   height: 50px;
   display: block;
@@ -14,5 +14,5 @@
 
 #index-add {
   display: block;
-  margin: 0 auto
+  margin: 0 auto;
 }

@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 const Record = require('./models/record')
 
@@ -16,6 +17,7 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
@@ -64,9 +66,16 @@ app.get('/expense-tracker/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/expense-tracker/:id/edit', (req, res) => {
+app.put('/expense-tracker/:id', (req, res) => {
   const id = req.params.id
   return Record.findByIdAndUpdate(id, req.body)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+app.delete('/expense-tracker/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findByIdAndRemove(id)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })

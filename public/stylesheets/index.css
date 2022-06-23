@@ -16,3 +16,13 @@
   display: block;
   margin: 0 auto;
 }
+
+#index-sum {
+  font-size: 30px;
+}
+
+#index-sum-number {
+  font-size: 40px;
+}
+
+.index-sum-p {}

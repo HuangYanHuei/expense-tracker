@@ -13,11 +13,15 @@
   </ul>
 </div>
 
-<p class="index-total">總金額：{{sum}}</p>
+<div class="index-sum-p">
+  <p class="index-total text-center mt-3" id="index-sum">總金額：</p>
+  <p class="text-center" id="index-sum-number">{{sum}}</p>
+</div>
+
 <div class="d-flex justify-content-center">
   <ul class="list-group" style="width:45%">
     {{#each records}}
-    <li class="list-group-item">
+    <li class="list-group-item rounded mb-3 border border-dark">
       <div class="row">
         <div class="col-auto me-auto">
           <h4 style="display: inline; vertical-align: middle;">

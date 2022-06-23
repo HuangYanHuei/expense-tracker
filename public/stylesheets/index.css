@@ -23,6 +23,9 @@
 
 #index-sum-number {
   font-size: 40px;
+  color: orange;
 }
 
-.index-sum-p {}
+#index-amount {
+  font-size: 25px;
+}

@@ -24,7 +24,12 @@ const recordSchema = new Schema({
     ref: 'Category',
     index: true,
     required: true
-  }
-
+  },
+  icon: {  // 加入關聯設定
+    type: Schema.Types.String,
+    ref: 'Category',
+    index: true,
+    required: true
+  },
 })
 module.exports = mongoose.model('Record', recordSchema)

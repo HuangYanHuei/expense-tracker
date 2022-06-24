@@ -8,12 +8,12 @@ const Category = require('../../models/category')
 router.get('/', (req, res) => {
   const userId = req.user._id
   const category = req.query.value
+  let sum = 0
   if (!category || category === 'all') {
-    return Record.find({ userId })
+    Record.find({ userId })
       .lean()
       .sort({ _id: 'asc' })
-      .then(records => {
-        let sum = 0
+      .then((records) => {
         records.map(value => sum += value.amount)
         res.render('index', { records, sum })
       })
@@ -22,12 +22,14 @@ router.get('/', (req, res) => {
       .lean()
       .then((categorys) => {
         const categoryId = categorys._id
+        const categoryIcon = categorys.icon
         return Record.find({ userId, categoryId })
           .lean()
           .sort({ _id: 'asc' })
           .then((records) => {
             let sum = 0
             records.map(value => sum += value.amount)
+            records.map(value => value.icon = categoryIcon)
             res.render('index', { records, sum })
           })
       })

@@ -17,18 +17,18 @@
   <p class="index-totalfw-bold" id="index-sum">總金額：</p>
   <p class="" id="index-sum-number">{{sum}}</p>
 </div>
-
 <div class="d-flex justify-content-center">
-  <ul class="list-group" style="width:45%">
+  <ul class="list-group card-list-panel" style="width:45%">
     {{#each records}}
     <li class="list-group-item mb-3 border-0 border-bottom border-dark border border-2">
       <div class="row">
+        <i class="fa-solid {{this.icon}} col-1 text-start" style="font-size: 40px; color: lightblue"></i>
         <div class="col-auto me-auto fw-bold">
           <p class="mb-0" style="font-size:25px;">{{this.name}}</p>
           <p class="mb-0" style="font-size:12px;">{{this.date}}</p>
         </div>
         <div class="col-auto mt-1">
-          <p class="me-3" style="display: inline;" id="index-amount">{{this.amount}}</p>
+          <p class="me-3" style="display:inline;" id="index-amount">{{this.amount}}</p>
           <a class="btn btn-success" href="./records/{{ this._id }}/edit">修改</a>
           <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
             <button class="btn btn-danger" type="submit">刪除</button>

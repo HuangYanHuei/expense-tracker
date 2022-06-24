@@ -13,8 +13,9 @@ router.post('/', (req, res) => {
     .lean()
     .then((categorys) => {
       const categoryId = categorys._id
+      const icon = categorys.icon
       return Record.create({
-        name, date, amount, userId, categoryId
+        name, date, amount, userId, categoryId, icon
       })
     })
     .then(() => res.redirect('/'))
@@ -46,7 +47,8 @@ router.put('/:id', (req, res) => {
     .lean()
     .then((categorys) => {
       const categoryId = categorys._id
-      return Record.findByIdAndUpdate({ _id, userId }, { name, date, amount, categoryId })
+      const icon = categorys.icon
+      return Record.findByIdAndUpdate({ _id, userId }, { name, date, amount, categoryId, icon })
     })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

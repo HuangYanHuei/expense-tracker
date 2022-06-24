@@ -8,14 +8,14 @@ const Category = require('../../models/category')
 router.get('/', (req, res) => {
   const userId = req.user._id
   const category = req.query.value
-  let sum = 0
+  let totalAmount = 0
   if (!category || category === 'all') {
     Record.find({ userId })
       .lean()
       .sort({ _id: 'asc' })
       .then((records) => {
-        records.map(value => sum += value.amount)
-        res.render('index', { records, sum })
+        records.map(value => totalAmount += value.amount)
+        res.render('index', { records, totalAmount })
       })
   } else {
     Category.findOne({ name: category })
@@ -27,10 +27,10 @@ router.get('/', (req, res) => {
           .lean()
           .sort({ _id: 'asc' })
           .then((records) => {
-            let sum = 0
-            records.map(value => sum += value.amount)
+            let totalAmount = 0
+            records.map(value => totalAmount += value.amount)
             records.map(value => value.icon = categoryIcon)
-            res.render('index', { records, sum })
+            res.render('index', { records, totalAmount })
           })
       })
       .catch(error => console.error(error))
